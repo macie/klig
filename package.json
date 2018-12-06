@@ -14,6 +14,9 @@
       "jest": "23.6.x",
       "regenerator-runtime": "0.12.x"
     },
+    "scripts": {
+      "test": "./node_modules/jest/bin/jest.js --config=tests/config/jest.json --coverage"
+    },
     "author": "Maciej Żok",
     "license": "MIT"
   }
