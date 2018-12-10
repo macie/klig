@@ -1,23 +1,23 @@
 {
-    "name": "klig",
-    "version": "0.1.0",
-    "description": "A keyboard layout installers generator.",
-    "main": "klig-cli.js",
-    "dependencies": {},
-    "devDependencies": {
-      "@babel/core": "7.1.x",
-      "@babel/preset-env": "7.1.x",
-      "babel-core": "^7.0.0-bridge.0",
-      "babel-eslint": "10.0.x",
-      "babel-jest": "23.6.x",
-      "eslint": "5.6.x",
-      "jest": "23.6.x",
-      "regenerator-runtime": "0.12.x"
-    },
-    "scripts": {
-      "test": "./node_modules/jest/bin/jest.js --config=tests/config/jest.json --coverage"
-    },
-    "author": "Maciej Żok",
-    "license": "MIT"
-  }
-  
+  "name": "klig",
+  "version": "0.1.0",
+  "description": "A keyboard layout installers generator.",
+  "main": "klig-cli.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.1.x",
+    "@babel/preset-env": "7.1.x",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "10.0.x",
+    "babel-jest": "23.6.x",
+    "eslint": "5.6.x",
+    "jest": "23.6.x",
+    "pegjs": "0.10.x",
+    "regenerator-runtime": "0.12.x"
+  },
+  "scripts": {
+    "test": "./node_modules/jest/bin/jest.js --config=tests/config/jest.json --coverage"
+  },
+  "author": "Maciej Żok",
+  "license": "MIT"
+}
