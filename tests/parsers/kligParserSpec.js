@@ -44,40 +44,71 @@ describe('Klig parser', () => {
     });
 
     describe('should be able to parse one line', () => {
-        it('with one special key', () => {
-            const layout = 'SHIFT';
-            const ast = [['SHIFT']];
+        describe('with one special key', () => {
+            it('without spaces', () => {
+                const layout = 'SHIFT';
+                const ast = [['SHIFT']];alt
 
-            let result = parser.parse(layout);
+                let result = parser.parse(layout);
 
-            expect(result).toEqual(ast);
+                expect(result).toEqual(ast);
+            });
+
+            it('with spaces', () => {
+                const layout = '  ALT\t ';
+                const ast = [['META']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
+
+            it('with new line', () => {
+                const layout = 'ALTGR\r\n';
+                const ast = [['ALTGR']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
+
+            it('with spaces and new line', () => {
+                const layout = ' ALTGR\t\r\n';
+                const ast = [['ALTGR']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
         });
 
-        it('with one special key and spaces', () => {
-            const layout = '  ALT\t ';
-            const ast = [['META']];
+        describe('with many special key', () => {
+            it('with spaces', () => {
+                const layout = 'OPTION  ALT\t ';
+                const ast = [['META', 'META']];
 
-            let result = parser.parse(layout);
+                let result = parser.parse(layout);
 
-            expect(result).toEqual(ast);
-        });
+                expect(result).toEqual(ast);
+            });
 
-        it('with one special key and new line', () => {
-            const layout = 'ALTGR\r\n';
-            const ast = [['ALTGR']];
+            it('with new line', () => {
+                const layout = ' ALT ALTGR\r\n';
+                const ast = [['META', 'ALTGR']];
 
-            let result = parser.parse(layout);
+                let result = parser.parse(layout);
 
-            expect(result).toEqual(ast);
-        });
+                expect(result).toEqual(ast);
+            });
 
-        it('with one special key and spaces and new line', () => {
-            const layout = ' ALTGR\t\r\n';
-            const ast = [['ALTGR']];
+            it('with spaces and new line', () => {
+                const layout = '  ALTGR CTRL\t\r\n';
+                const ast = [['ALTGR', 'CONTROL']];
 
-            let result = parser.parse(layout);
+                let result = parser.parse(layout);
 
-            expect(result).toEqual(ast);
+                expect(result).toEqual(ast);
+            });
         });
     });
 });
