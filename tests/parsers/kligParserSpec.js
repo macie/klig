@@ -47,7 +47,7 @@ describe('Klig parser', () => {
         describe('with one special key', () => {
             it('without spaces', () => {
                 const layout = 'SHIFT';
-                const ast = [['SHIFT']];alt
+                const ast = [['SHIFT']];
 
                 let result = parser.parse(layout);
 
@@ -109,6 +109,44 @@ describe('Klig parser', () => {
 
                 expect(result).toEqual(ast);
             });
+        });
+    });
+
+    describe('should be able to parse special keys', () => {
+        it('written with uppercase', () => {
+            const layout = 'SHIFT';
+            const ast = [['SHIFT']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('written with lowercase', () => {
+            const layout = 'option';
+            const ast = [['META']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('written with title case', () => {
+            const layout = 'Alt';
+            const ast = [['META']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('written with camelcase', () => {
+            const layout = 'oPtiOn';
+            const ast = [['META']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
         });
     });
 });
