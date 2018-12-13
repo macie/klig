@@ -112,6 +112,44 @@ describe('Klig parser', () => {
         });
     });
 
+    describe('should be able to parse', () => {
+        it('uppercase letter', () => {
+            const layout = 'A';
+            const ast = [['A']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('lowercase letter', () => {
+            const layout = 'd';
+            const ast = [['d']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('digit', () => {
+            const layout = '4';
+            const ast = [['4']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+
+        it('other characters', () => {
+            const layout = '{';
+            const ast = [['{']];
+
+            let result = parser.parse(layout);
+
+            expect(result).toEqual(ast);
+        });
+    });
+
     describe('should be able to parse special keys', () => {
         it('written with uppercase', () => {
             const layout = 'SHIFT';
