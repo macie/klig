@@ -148,6 +148,35 @@ describe('Klig parser', () => {
                 expect(result).toEqual(ast);
             });
         });
+
+        describe('with many dead keys', () => {
+            it('with spaces', () => {
+                const layout = '["]  [^]\t ';
+                const ast = [['dead:"', 'dead:^']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
+
+            it('with new line', () => {
+                const layout = ' [°] [¸]\r\n';
+                const ast = [['dead:°', 'dead:¸']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
+
+            it('with spaces and new line', () => {
+                const layout = '  [^] [¸]\t\r\n';
+                const ast = [['dead:^', 'dead:¸']];
+
+                let result = parser.parse(layout);
+
+                expect(result).toEqual(ast);
+            });
+        });
     });
 
     describe('should be able to parse', () => {
